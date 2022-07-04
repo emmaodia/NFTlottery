@@ -155,7 +155,7 @@ contract NFTlottery is ERC721URIStorage, Ownable, VRFConsumerBase  {
         getRandomNumber();
     }
 
-    function payWinner() public {
+    function payWinner() public onlyOwner {
         uint256 index = randomResult % players.length;
         players[index].transfer(address(this).balance);
 
